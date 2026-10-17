@@ -1,0 +1,14 @@
+// Configuration Cloudflare : le site est 100 % statique.
+// `npm run build` produit le dossier out/, que Cloudflare sert tel quel.
+// (Sans ce fichier, `wrangler deploy` tente de convertir le projet en application
+// serveur avec OpenNext, ce qui échoue avec `output: "export"`.)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    // Sert out/404.html pour toute adresse inconnue.
+    "not_found_handling": "404-page"
+  }
+}
