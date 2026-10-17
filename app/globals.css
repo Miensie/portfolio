@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/*
+ * Thème du site.
+ * Palette d'origine + deux teintes d'accessibilité :
+ *  - electric-ink  (#1D4ED8) : bleu pour le TEXTE sur fond clair (contraste ≥ 4,5:1)
+ *  - electric-soft (#60A5FA) : bleu pour le TEXTE sur fond sombre
+ *  - ink-*         : gris lisibles sur fond clair (#94A3B8 est réservé aux fonds sombres)
+ */
+@theme {
+  --color-night: #0b1426;
+  --color-night-2: #0f1b33;
+  --color-night-line: #1e2a44;
+  --color-electric: #2563eb;
+  --color-electric-ink: #1d4ed8;
+  --color-electric-soft: #60a5fa;
+  --color-paper: #f8fafc;
+  --color-mist: #94a3b8;
+  --color-mist-light: #cbd5e1;
+  --color-ink: #0b1426;
+  --color-ink-2: #334155;
+  --color-ink-3: #475569;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-electric);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: #bfdbfe;
+    color: var(--color-night);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tracé du spectre décoratif du Hero : dessiné une seule fois au chargement. */
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.spectrum-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: draw-line 2.2s ease-out both;
+}
