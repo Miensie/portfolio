@@ -7,7 +7,7 @@ import { applicationFields } from "@/content/vision";
 import { explorationAreas } from "@/content/skills";
 
 export const metadata: Metadata = {
-  title: "Vision : le Projet Nexus",
+  title: "Vision",
   description:
     "Ma vision d'ingénieur : partir de la chimie et du génie des procédés, élargir vers la physique, la simulation, l'électronique et l'IA, pour concevoir des technologies utiles en énergie, matériaux, environnement et durabilité.",
   alternates: { canonical: "/vision/" },
@@ -24,7 +24,7 @@ export default function VisionPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Vision · Projet Nexus"
+        eyebrow="Vision"
         title="Relier les disciplines pour concevoir des technologies utiles"
         intro="Ma formation me donne un socle. Ce que je veux construire au-dessus dépasse une seule spécialité."
       />
@@ -54,10 +54,10 @@ export default function VisionPage() {
 
       <Section tone="white" labelledBy="nexus-titre">
         <SectionHeader
-          eyebrow="Le Projet Nexus"
+          eyebrow="Ma vision à long terme"
           id="nexus-titre"
           title="Acquérir une culture assez large pour relier les disciplines"
-          intro="C'est le nom que je donne à ma vision à long terme : contribuer à concevoir des technologies qui répondent à des problèmes concrets. Le projet se construit en trois couches."
+          intro="À long terme, je veux contribuer à concevoir des technologies qui répondent à des problèmes concrets. Cette vision se construit en trois couches."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           <Reveal className="rounded-xl bg-night p-7 text-paper">

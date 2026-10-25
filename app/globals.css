@@ -207,3 +207,221 @@
   stroke-dashoffset: 0;
   animation: draw-line 2.2s ease-out both;
 }
+
+/* ───────────── Animations supplémentaires ───────────── */
+
+/* Mots du titre principal qui apparaissent un par un. */
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.word {
+  display: inline-block;
+  animation: word-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Mot mis en valeur : soulignement qui se trace. */
+@keyframes underline-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.highlight {
+  position: relative;
+  white-space: nowrap;
+}
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.09em;
+  border-radius: 2px;
+  background: var(--color-electric-soft);
+  transform-origin: left;
+  animation: underline-grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 1200ms);
+}
+
+/* Fond animé des en-têtes de pages : grille qui dérive et halo qui se déplace. */
+@keyframes grid-drift {
+  to {
+    background-position:
+      48px 48px,
+      48px 48px;
+  }
+}
+@keyframes halo-move {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-8%, 10%) scale(1.15);
+  }
+}
+@keyframes scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(900%);
+  }
+}
+.anim-grid {
+  background-image:
+    linear-gradient(to right, rgba(30, 42, 68, 0.75) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 42, 68, 0.75) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-drift 14s linear infinite;
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 75%);
+}
+.anim-halo {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 65%);
+  animation: halo-move 12s ease-in-out infinite;
+}
+.anim-scan {
+  background: linear-gradient(to bottom, transparent, rgba(96, 165, 250, 0.12), transparent);
+  animation: scan 7s linear infinite;
+}
+
+/* Couvertures des cartes : le motif s'anime quand la carte apparaît, et au survol. */
+.cover-draw {
+  stroke-dasharray: 1;
+}
+.js .cover-draw {
+  stroke-dashoffset: 1;
+}
+.is-visible .cover-draw,
+.rise .cover-draw,
+.group:hover .cover-draw {
+  animation: draw-line 1.8s ease-out forwards;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.cover-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.js .cover-pop {
+  opacity: 0;
+}
+.is-visible .cover-pop,
+.rise .cover-pop {
+  animation: pop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+.cover-breathe {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 4s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+.group:hover .cover-zoom {
+  transform: scale(1.06);
+}
+.cover-zoom {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-origin: center;
+}
+
+/* Boutons : reflet qui traverse au survol, flèche qui avance. */
+.btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.22) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn:hover::before {
+  transform: translateX(120%);
+}
+.btn svg {
+  transition: transform 0.25s ease;
+}
+.btn:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+/* Frise chronologique : la ligne se trace, le point « à venir » pulse. */
+.js .reveal .timeline-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+.js .reveal.is-visible .timeline-line {
+  transform: scaleY(1);
+}
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.ping::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-electric);
+  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word,
+  .highlight::after,
+  .anim-grid,
+  .anim-halo,
+  .anim-scan,
+  .cover-breathe,
+  .ping::after {
+    animation: none !important;
+  }
+  .js .cover-draw {
+    stroke-dashoffset: 0;
+  }
+  .js .cover-pop {
+    opacity: 1;
+  }
+}

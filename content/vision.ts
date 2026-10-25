@@ -1,5 +1,5 @@
 /**
- * Démarche d'ingénieur et vision à long terme (Projet Nexus).
+ * Démarche d'ingénieur et vision à long terme.
  * Texte écrit à la première personne, à partir de ce que Koffi a formulé.
  */
 
@@ -46,9 +46,9 @@ export const position = [
   {
     label: "Vision",
     title: "Où je veux aller",
-    text: "Le Projet Nexus : une culture scientifique assez large pour relier les disciplines et concevoir des technologies utiles, en énergie, matériaux, environnement et durabilité.",
+    text: "Une culture scientifique assez large pour relier les disciplines et concevoir des technologies utiles, en énergie, matériaux, environnement et durabilité.",
     href: "/vision/",
-    cta: "Lire le Projet Nexus",
+    cta: "Lire ma vision",
   },
 ] as const;
 

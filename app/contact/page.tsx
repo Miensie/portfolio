@@ -7,7 +7,7 @@ import { cvAvailable } from "@/lib/cv";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contacter Koffi Amani : e-mail, GitHub et CV à télécharger.",
+  description: "Contacter KOFFI MIENSIE EZECHIEL AMANI : e-mail, GitHub et CV à télécharger.",
   alternates: { canonical: "/contact/" },
 };
 

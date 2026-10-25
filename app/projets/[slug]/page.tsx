@@ -7,6 +7,7 @@ import { domains, getProject, problems, projects } from "@/content/projects";
 import { method } from "@/content/vision";
 import { StatusBadge, TechTag } from "@/components/ui/Tags";
 import { Reveal } from "@/components/motion/Reveal";
+import { CountUp } from "@/components/motion/CountUp";
 import type { ProjectLink } from "@/lib/types";
 
 interface Params {
@@ -146,7 +147,9 @@ export default async function ProjectPage({ params }: Params) {
                   {project.metrics.map((m) => (
                     <div key={m.label} className="bg-white p-5">
                       <dt className="text-sm text-ink-3">{m.label}</dt>
-                      <dd className="mt-1 font-mono text-2xl font-medium">{m.value}</dd>
+                      <dd className="mt-1 font-mono text-2xl font-medium">
+                        <CountUp value={m.value} />
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -191,14 +194,13 @@ export default async function ProjectPage({ params }: Params) {
                 ))}
               </ul>
             </div>
-            <div>
-              <h2 className="font-mono text-xs uppercase tracking-widest text-ink-3">Captures d&apos;écran</h2>
-              <p className="mt-3 text-sm text-ink-3">
-                {project.figures?.length
-                  ? "Les figures présentées viennent des résultats réels du projet."
-                  : "Captures à venir, avec des données de démonstration."}
-              </p>
-            </div>
+            {/* Affiché seulement quand le projet a de vraies figures. */}
+            {project.figures && project.figures.length > 0 && (
+              <div>
+                <h2 className="font-mono text-xs uppercase tracking-widest text-ink-3">Figures</h2>
+                <p className="mt-3 text-sm text-ink-3">Les figures présentées viennent des résultats réels du projet.</p>
+              </div>
+            )}
           </aside>
         </div>
 

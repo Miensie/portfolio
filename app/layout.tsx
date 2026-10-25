@@ -10,6 +10,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { cvAvailable } from "@/lib/cv";
 import { RevealObserver } from "@/components/motion/RevealObserver";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-dvh flex flex-col antialiased">
         <RevealObserver />
+        <ScrollProgress />
         <a
           href="#contenu"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-ink"

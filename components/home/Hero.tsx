@@ -6,6 +6,8 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SpectrumLine } from "./SpectrumLine";
 import { SystemDiagram } from "./SystemDiagram";
 
+const TITLE = "Comprendre un système, le modéliser, puis construire ce qui l'améliore.";
+
 export function Hero({ hasCv }: { hasCv: boolean }) {
   return (
     <section aria-labelledby="hero-titre" className="relative overflow-hidden bg-night text-paper">
@@ -17,10 +19,24 @@ export function Hero({ hasCv }: { hasCv: boolean }) {
             </p>
             <h1
               id="hero-titre"
-              className="rise mt-5 max-w-[17ch] text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.6rem]"
-              style={{ ["--delay" as string]: "120ms" }}
+              aria-label={TITLE}
+              className="mt-5 max-w-[17ch] text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.6rem]"
             >
-              Comprendre un système, le modéliser, puis construire ce qui l&apos;améliore.
+              {/* Chaque mot apparaît à son tour ; « système » est souligné ensuite. */}
+              {TITLE.split(" ").map((word, i) => (
+                <span key={i} aria-hidden="true">
+                  <span className="word" style={{ ["--delay" as string]: `${120 + i * 70}ms` }}>
+                    {word.startsWith("système") ? (
+                      <>
+                        <span className="highlight">système</span>
+                        {word.slice("système".length)}
+                      </>
+                    ) : (
+                      word
+                    )}
+                  </span>{" "}
+                </span>
+              ))}
             </h1>
             <p
               className="rise mt-6 max-w-[60ch] text-lg text-mist-light"
@@ -46,7 +62,7 @@ export function Hero({ hasCv }: { hasCv: boolean }) {
               className="rise mt-6 inline-flex min-h-11 items-center gap-1.5 text-[15px] text-mist hover:text-paper"
               style={{ ["--delay" as string]: "480ms" }}
             >
-              Lire ma vision d&apos;ingénieur, le Projet Nexus <ArrowRight aria-hidden="true" size={16} />
+              Lire ma vision d&apos;ingénieur <ArrowRight aria-hidden="true" size={16} />
             </Link>
           </div>
 

@@ -120,7 +120,7 @@ export default function SkillsPage() {
         </div>
         <Reveal className="mt-10">
           <Link href="/vision/" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-electric-ink hover:underline">
-            Pourquoi ces disciplines : le Projet Nexus <ArrowRight aria-hidden="true" size={16} />
+            Pourquoi ces disciplines : ma vision <ArrowRight aria-hidden="true" size={16} />
           </Link>
         </Reveal>
       </Section>

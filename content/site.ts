@@ -3,12 +3,13 @@
  * C'est le premier fichier à modifier pour mettre à jour vos coordonnées.
  */
 export const site = {
-  name: "Koffi Miensie Ezéchiel Amani",
-  shortName: "Koffi Amani",
+  name: "KOFFI MIENSIE EZECHIEL AMANI",
+  /** Nom affiché dans la barre de navigation et les titres d'onglet. */
+  shortName: "KOFFI MIENSIE EZECHIEL AMANI",
   initials: "KA",
   title: "Ingénieur en formation, chimie et génie des procédés",
   description:
-    "Portfolio de Koffi Amani, ingénieur en formation à l'INP-HB. Une base en chimie et génie des procédés, des projets qui mêlent mesure, modélisation, données et logiciel, et une démarche tournée vers l'ingénierie interdisciplinaire.",
+    "Portfolio de KOFFI MIENSIE EZECHIEL AMANI, ingénieur en formation à l'INP-HB. Une base en chimie et génie des procédés, des projets qui mêlent mesure, modélisation, données et logiciel, et une démarche tournée vers l'ingénierie interdisciplinaire.",
   location: "Abidjan, Côte d'Ivoire",
   email: "koffimiensie@gmail.com",
   github: "https://github.com/Miensie",

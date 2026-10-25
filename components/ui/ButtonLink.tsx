@@ -21,7 +21,7 @@ interface Props {
 
 /** Bouton-lien unique du site (navigation interne, liens externes, téléchargements). */
 export function ButtonLink({ href, children, variant = "primary", external, download }: Props) {
-  const className = `inline-flex min-h-12 items-center gap-2 rounded-md font-medium transition-colors ${styles[variant]}`;
+  const className = `${variant === "text" ? "" : "btn "}inline-flex min-h-12 items-center gap-2 rounded-md font-medium transition-colors ${styles[variant]}`;
   if (external || download || href.startsWith("mailto:")) {
     return (
       <a

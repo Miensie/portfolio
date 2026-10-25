@@ -48,7 +48,11 @@ export function SectionHeader({ eyebrow, title, id, intro, dark }: HeaderProps) 
 /** En-tête sombre des pages intérieures. */
 export function PageHeader({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
-    <div className="bg-night text-paper">
+    <div className="relative isolate overflow-hidden bg-night text-paper">
+      {/* Fond animé décoratif : grille qui dérive, halo lumineux, ligne de balayage. */}
+      <div aria-hidden="true" className="anim-grid absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="anim-halo absolute -right-24 -top-24 -z-10 size-[28rem] rounded-full" />
+      <div aria-hidden="true" className="anim-scan absolute inset-x-0 top-0 -z-10 h-24" />
       <div className="mx-auto max-w-6xl px-4 pb-14 pt-14 sm:px-6 sm:pt-20 lg:px-8">
         <p className="rise font-mono text-[13px] uppercase tracking-[0.08em] text-electric-soft">{eyebrow}</p>
         <h1
