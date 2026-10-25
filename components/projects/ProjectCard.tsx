@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/types";
-import { categories } from "@/content/projects";
+import { domains, problems } from "@/content/projects";
 import { ProjectCover } from "./ProjectCover";
 import { StatusBadge, TechTag } from "@/components/ui/Tags";
 
 export function ProjectCard({ project, headingLevel = 3 }: { project: Project; headingLevel?: 2 | 3 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
-  const mainCategory = project.categories[0] ?? "chimie";
+  const mainProblem = project.problems[0] ?? "mesurer";
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-line bg-white transition-shadow hover:shadow-[0_8px_30px_-12px_rgba(11,20,38,0.25)]">
-      <ProjectCover category={mainCategory} />
+    <article className="lift group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white">
+      <ProjectCover problem={mainProblem} />
       <div className="flex flex-1 flex-col gap-4 p-6">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <span className="font-mono text-xs uppercase tracking-wide text-ink-3">{categories[mainCategory]}</span>
+          <span className="font-mono text-xs uppercase tracking-wide text-electric-ink">{problems[mainProblem]}</span>
           <span className="ml-auto">
             <StatusBadge status={project.status} />
           </span>
@@ -26,8 +26,9 @@ export function ProjectCard({ project, headingLevel = 3 }: { project: Project; h
             </Link>
           </Heading>
           <p className="mt-1 text-sm text-ink-3">
-            {project.context} · {project.year}
+            {project.context}, {project.year}
           </p>
+          <p className="mt-1 text-sm text-ink-3">{project.domains.map((d) => domains[d]).join(" · ")}</p>
         </div>
         <dl className="space-y-3 text-[15px]">
           <div>

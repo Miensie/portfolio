@@ -1,11 +1,11 @@
-import type { CategoryId } from "@/lib/types";
+import type { ProblemId } from "@/lib/types";
 
 /**
- * Visuel DÉCORATIF des cartes (motif par catégorie).
+ * Visuel DÉCORATIF des cartes (un motif par problématique).
  * Ce n'est pas une capture d'écran : il est masqué aux lecteurs d'écran.
  * Quand vous disposerez de vraies captures, ajoutez-les dans `figures` du projet.
  */
-export function ProjectCover({ category }: { category: CategoryId }) {
+export function ProjectCover({ problem }: { problem: ProblemId }) {
   return (
     <div aria-hidden="true" className="relative aspect-[16/7] overflow-hidden border-b border-line bg-[#EEF2F7]">
       <svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full">
@@ -14,7 +14,7 @@ export function ProjectCover({ category }: { category: CategoryId }) {
             <line key={y} x1="0" x2="320" y1={y} y2={y} />
           ))}
         </g>
-        {category === "chimie" && (
+        {problem === "mesurer" && (
           <path
             d="M0 118 C40 117 60 115 80 116 S100 70 108 114 S140 118 160 116 S175 30 184 112 S220 117 240 115 S256 84 264 113 S300 118 320 117"
             fill="none"
@@ -22,7 +22,7 @@ export function ProjectCover({ category }: { category: CategoryId }) {
             strokeWidth="1.6"
           />
         )}
-        {category === "chimiometrie" && (
+        {problem === "fiabiliser" && (
           <g fill="#2563EB">
             {Array.from({ length: 34 }, (_, i) => {
               const x = 30 + i * 8;
@@ -32,7 +32,7 @@ export function ProjectCover({ category }: { category: CategoryId }) {
             <line x1="22" y1="124" x2="304" y2="34" stroke="#0B1426" strokeWidth="1" strokeDasharray="4 3" />
           </g>
         )}
-        {category === "ia" && (
+        {problem === "modeliser" && (
           <g stroke="#2563EB" strokeWidth="0.8" fill="#F8FAFC">
             {[40, 70, 100].map((y1) =>
               [30, 60, 90, 120].map((y2) => <line key={`${y1}-${y2}`} x1="110" y1={y1} x2="170" y2={y2} opacity="0.5" />),
@@ -47,7 +47,7 @@ export function ProjectCover({ category }: { category: CategoryId }) {
             <circle cx="230" cy="75" r="7" fill="#2563EB" />
           </g>
         )}
-        {category === "automatisation" && (
+        {problem === "outiller" && (
           <g>
             {Array.from({ length: 6 }, (_, r) =>
               Array.from({ length: 9 }, (_, c) => (
@@ -65,13 +65,22 @@ export function ProjectCover({ category }: { category: CategoryId }) {
             )}
           </g>
         )}
-        {category === "web" && (
-          <g fill="none" stroke="#2563EB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="70" y="22" width="180" height="100" rx="6" stroke="#94A3B8" />
-            <line x1="70" y1="40" x2="250" y2="40" stroke="#94A3B8" />
-            <path d="m136 66-14 14 14 14" />
-            <path d="m184 66 14 14-14 14" />
-            <path d="m168 60-16 40" />
+        {problem === "optimiser" && (
+          <g fill="none" stroke="#2563EB">
+            {/* Courbes de niveau d'une surface de réponse et son optimum. */}
+            {[14, 28, 42, 56, 70, 84].map((r, i) => (
+              <ellipse
+                key={r}
+                cx="190"
+                cy="70"
+                rx={r * 1.5}
+                ry={r * 0.8}
+                transform="rotate(-18 190 70)"
+                strokeWidth="1"
+                opacity={1 - i * 0.13}
+              />
+            ))}
+            <circle cx="190" cy="70" r="4" fill="#0B1426" stroke="none" />
           </g>
         )}
       </svg>

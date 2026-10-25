@@ -48,6 +48,122 @@
     background: #bfdbfe;
     color: var(--color-night);
   }
+  /* Texte courant justifié, avec césure française pour éviter les trous entre les mots.
+     Une ligne unique reste alignée à gauche ; les classes text-center/left gardent la main. */
+  main p,
+  main dd,
+  main li {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;
+  }
+}
+
+/* ───────────── Animations ─────────────
+ * Les éléments .reveal ne sont masqués que si JavaScript est actif (classe .js sur <html>) :
+ * sans JS, tout reste visible. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.orbit {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: orbit 60s linear infinite;
+}
+.orbit-reverse {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: orbit 90s linear infinite reverse;
+}
+
+@keyframes pulse-node {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pulse-node {
+  animation: pulse-node 3.2s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Trait qui « circule » le long d'un chemin (flux d'un schéma de procédé). */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.flow {
+  stroke-dasharray: 4 8;
+  animation: flow 1.6s linear infinite;
+}
+
+/* Ligne de la démarche : se trace quand la section devient visible. */
+.js .reveal .draw-x {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+}
+.js .reveal.is-visible .draw-x {
+  transform: scaleX(1);
+}
+
+.lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px -16px rgba(11, 20, 38, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -60,6 +176,20 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .js .reveal .draw-x {
+    transform: none;
+  }
+  .float,
+  .orbit,
+  .orbit-reverse,
+  .pulse-node,
+  .flow {
+    animation: none !important;
   }
 }
 

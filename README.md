@@ -53,10 +53,18 @@ git push -u origin main
 > Pensez à corriger `NEXT_PUBLIC_SITE_URL` dès que l'adresse définitive est connue, puis à
 > redéployer : elle sert au sitemap, au robots.txt et aux aperçus de partage (LinkedIn, WhatsApp).
 
-### Alternative : Cloudflare Pages
+### Alternative gratuite : Cloudflare
 
-Dashboard → **Workers & Pages → Create → Pages → Connect to Git**, puis :
-commande de build `npm run build`, dossier de sortie `out`, mêmes variables d'environnement.
+Le fichier `wrangler.jsonc` indique à Cloudflare de servir le dossier `out/` comme site statique.
+Dans **Workers & Pages → (votre projet) → Settings → Build** :
+
+- Build command : `npm run build`
+- Deploy command : `npx wrangler deploy`
+- Variable de build : `NEXT_PUBLIC_SITE_URL` = l'adresse affichée par Cloudflare
+  (ex. `https://portfolio.<votre-sous-domaine>.workers.dev`)
+
+Sans `wrangler.jsonc`, Cloudflare essaie de convertir le site en application serveur
+(OpenNext) et le déploiement échoue sur `pages-manifest.json`.
 
 ## 5. Nom de domaine personnalisé (facultatif)
 
@@ -106,7 +114,7 @@ TypeScript signale immédiatement un champ manquant ou mal orthographié (`npm r
 
 - CV : remplacer `public/cv/CV_Koffi_Amani.pdf` (même nom). S'il est supprimé, les boutons CV
   disparaissent automatiquement.
-- Photo : remplacer `public/images/portrait.jpg` ; si les dimensions changent, mettre à jour
+- Photo : remplacer `public/images/portrait.webp` (fond transparent, 695 × 988 px) ; si les dimensions changent, mettre à jour
   `width`/`height` dans `components/home/Hero.tsx` et `app/a-propos/page.tsx`.
 
 ---

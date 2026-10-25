@@ -33,7 +33,7 @@ interface HeaderProps {
 /** Titre de section : petite étiquette monospace + titre + introduction. */
 export function SectionHeader({ eyebrow, title, id, intro, dark }: HeaderProps) {
   return (
-    <div className="mb-10 max-w-3xl">
+    <div className="reveal mb-10 max-w-3xl">
       <p className={`font-mono text-[13px] uppercase tracking-[0.08em] ${dark ? "text-electric-soft" : "text-electric-ink"}`}>
         {eyebrow}
       </p>
@@ -50,9 +50,18 @@ export function PageHeader({ eyebrow, title, intro }: { eyebrow: string; title: 
   return (
     <div className="bg-night text-paper">
       <div className="mx-auto max-w-6xl px-4 pb-14 pt-14 sm:px-6 sm:pt-20 lg:px-8">
-        <p className="font-mono text-[13px] uppercase tracking-[0.08em] text-electric-soft">{eyebrow}</p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">{title}</h1>
-        {intro && <p className="mt-5 max-w-2xl text-lg text-mist-light">{intro}</p>}
+        <p className="rise font-mono text-[13px] uppercase tracking-[0.08em] text-electric-soft">{eyebrow}</p>
+        <h1
+          className="rise mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+          style={{ ["--delay" as string]: "100ms" }}
+        >
+          {title}
+        </h1>
+        {intro && (
+          <p className="rise mt-5 max-w-2xl text-lg text-mist-light" style={{ ["--delay" as string]: "200ms" }}>
+            {intro}
+          </p>
+        )}
       </div>
     </div>
   );

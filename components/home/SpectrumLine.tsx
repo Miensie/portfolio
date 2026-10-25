@@ -1,5 +1,5 @@
 /**
- * Courbe décorative évoquant un spectre — ce n'est PAS une mesure réelle.
+ * Courbe décorative évoquant un spectre : ce n'est PAS une mesure réelle.
  * Tracée une seule fois au chargement ; animation désactivée si l'utilisateur
  * a demandé à réduire les animations.
  */

@@ -4,11 +4,12 @@ import { PageHeader, Section, SectionHeader } from "@/components/ui/Section";
 import { Timeline } from "@/components/ui/Timeline";
 import { certifications, languages, timeline } from "@/content/timeline";
 import { site } from "@/content/site";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "À propos",
   description:
-    "Parcours de Koffi Amani : classe préparatoire BCPST, cycle ingénieur en chimie analytique, matériaux et polymères à l'INP-HB, et stages tournés vers la mesure et l'automatisation.",
+    "Qui je suis : ingénieur en formation en chimie et génie des procédés à l'INP-HB, avec une démarche interdisciplinaire qui relie mesure, modélisation, données et logiciel.",
   alternates: { canonical: "/a-propos/" },
 };
 
@@ -17,51 +18,60 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="À propos"
-        title="Chimiste de formation, développeur par nécessité"
-        intro="Je me suis mis au code pour résoudre des problèmes de laboratoire. C'est devenu une manière de travailler."
+        title="Une base en chimie, une démarche d'ingénieur"
+        intro="Je ne me vois ni comme un pur chimiste, ni comme un développeur. Je me forme pour comprendre des systèmes et construire des solutions."
       />
 
-      <Section labelledBy="demarche-titre">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr]">
-          <div className="space-y-5 text-lg text-ink-2">
-            <h2 id="demarche-titre" className="text-3xl font-semibold tracking-tight text-ink">
-              Ma démarche
+      <Section labelledBy="qui-titre">
+        <div className="grid items-start gap-12 md:grid-cols-[1.5fr_1fr]">
+          <Reveal className="space-y-5 text-lg text-ink-2">
+            <h2 id="qui-titre" className="text-3xl font-semibold tracking-tight text-ink">
+              Qui je suis
             </h2>
             <p>
-              Je suis élève-ingénieur à l&apos;Institut National Polytechnique Houphouët-Boigny (INP-HB) de
-              Yamoussoukro, en chimie et génie des procédés, option Chimie Analytique, Matériaux et Polymères.
+              Je suis élève-ingénieur à l&apos;Institut National Polytechnique Houphouët-Boigny (INP-HB) de Yamoussoukro, en
+              chimie et génie des procédés, option Chimie Analytique, Matériaux et Polymères.
             </p>
             <p>
-              Ce qui m&apos;intéresse en chimie analytique, c&apos;est la question de la confiance : une mesure ne vaut que si
-              l&apos;on sait quelle erreur elle comporte. Étalonnage, validation, contrôle dans le temps — c&apos;est là que la
-              statistique devient un outil de décision.
+              Mes stages m&apos;ont appris une chose : un problème réel ne demande presque jamais une seule compétence. Pour
+              doser un additif dans un plastique, il m&apos;a fallu de la spectroscopie, de la statistique, de la métrologie
+              et de la programmation. Pour valider une méthode d&apos;analyse, il m&apos;a fallu écrire un logiciel.
             </p>
             <p>
-              Ces calculs sont souvent répétitifs et faits à la main. J&apos;ai donc appris à les automatiser : d&apos;abord en
-              Excel VBA, puis avec des compléments Excel web, des API Python et des modèles d&apos;apprentissage automatique.
-              Chacun de mes stages a abouti à un outil concret.
+              C&apos;est pour cela que je construis une approche interdisciplinaire. Mon socle reste la chimie et le génie
+              des procédés. Autour, j&apos;ajoute peu à peu ce qui me manque pour aller plus loin : physique appliquée,
+              transferts, simulation numérique, électronique, automatisation, et le logiciel comme outil transversal.
             </p>
             <p>
-              Mon objectif : rejoindre une équipe où la mesure, les données et le logiciel se rencontrent, et y apporter
-              des outils fiables, documentés et dont on connaît les limites.
+              Ce que je cherche, c&apos;est une équipe où l&apos;on attend d&apos;un ingénieur qu&apos;il comprenne le problème
+              avant de proposer une solution, et qu&apos;il sache dire honnêtement où cette solution s&apos;arrête.
             </p>
-          </div>
-          <div className="max-w-[300px]">
+          </Reveal>
+          <Reveal delay={150} className="relative mx-auto w-full max-w-[300px]">
+            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[18%] rounded-2xl bg-night" />
+            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[18%] overflow-hidden rounded-2xl">
+              <svg viewBox="0 0 300 330" className="size-full" preserveAspectRatio="xMidYMid slice">
+                <circle className="orbit" cx="150" cy="150" r="120" fill="none" stroke="#1E3A6E" strokeDasharray="2 6" />
+                <circle className="orbit-reverse" cx="150" cy="150" r="80" fill="none" stroke="#1E3A6E" />
+              </svg>
+            </div>
             <Image
-              src="/images/portrait.jpg"
+              src="/images/portrait.webp"
               alt={`Portrait de ${site.name}`}
-              width={481}
-              height={512}
-              className="h-auto w-full rounded-xl bg-[#c9c9c5]"
+              width={695}
+              height={988}
+              className="relative h-auto w-full drop-shadow-[0_16px_30px_rgba(11,20,38,0.35)]"
             />
-          </div>
+          </Reveal>
         </div>
       </Section>
 
       <Section tone="white" labelledBy="chrono-titre">
         <div className="grid gap-12 md:grid-cols-[1fr_1.6fr]">
           <SectionHeader eyebrow="Chronologie" id="chrono-titre" title="Parcours académique et stages" />
-          <Timeline items={timeline} />
+          <Reveal>
+            <Timeline items={timeline} />
+          </Reveal>
         </div>
       </Section>
 

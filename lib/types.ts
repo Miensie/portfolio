@@ -1,7 +1,10 @@
-/** Catégories de la galerie (filtres de /projets). */
-export type CategoryId = "chimie" | "chimiometrie" | "ia" | "automatisation" | "web";
+/** Problématique d'ingénierie traitée (premier filtre de /projets). */
+export type ProblemId = "mesurer" | "fiabiliser" | "modeliser" | "optimiser" | "outiller";
 
-/** État réel d'un projet — à garder honnête. */
+/** Domaine d'application (second filtre de /projets). */
+export type DomainId = "materiaux" | "analyse" | "procedes" | "qualite" | "environnement";
+
+/** État réel d'un projet, à garder honnête. */
 export type ProjectStatus = "termine" | "en-cours" | "prototype";
 
 export interface ProjectLink {
@@ -32,12 +35,15 @@ export interface Step {
 export interface Project {
   slug: string;
   title: string;
-  /** Ex. « Stage de fin d'études · SCCI » */
+  /** Nom court utilisé dans les liens (ex. « ChemAI »). */
+  shortTitle: string;
+  /** Ex. « Stage de fin d'études, SCCI » */
   context: string;
   year: string;
-  categories: CategoryId[];
+  problems: ProblemId[];
+  domains: DomainId[];
   status: ProjectStatus;
-  /** Affiché sur la page d'accueil (3 ou 4 projets maximum). */
+  /** Affiché sur la page d'accueil (4 projets maximum). */
   featured?: boolean;
   /** Une phrase pour les cartes et le SEO. */
   summary: string;
@@ -45,11 +51,17 @@ export interface Project {
   solution: string;
   stack: string[];
 
-  // ——— Étude de cas ———
+  // Étude de cas, organisée en cinq étapes :
+  // 1. Comprendre le problème
   objectives: string[];
   role: string;
+  // 2. Mobiliser les connaissances
+  knowledge: string[];
+  // 3. Modéliser ou expérimenter
   approach: Step[];
+  // 4. Développer la solution
   architecture: string[];
+  // 5. Évaluer les résultats et les limites
   results: string[];
   metrics?: Metric[];
   figures?: Figure[];
@@ -72,6 +84,12 @@ export interface Skill {
 export interface SkillGroup {
   title: string;
   skills: Skill[];
+}
+
+/** Domaine que je souhaite approfondir : aucune compétence revendiquée. */
+export interface ExplorationArea {
+  title: string;
+  text: string;
 }
 
 export interface TimelineItem {

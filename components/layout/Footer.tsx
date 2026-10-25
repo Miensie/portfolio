@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navigation, site } from "@/content/site";
+import { navigation, secondaryPages, site } from "@/content/site";
 
 export function Footer({ hasCv }: { hasCv: boolean }) {
   return (
@@ -13,7 +13,7 @@ export function Footer({ hasCv }: { hasCv: boolean }) {
         <nav aria-label="Pied de page">
           <p className="font-mono text-xs uppercase tracking-widest text-electric-soft">Pages</p>
           <ul className="mt-3 space-y-1 text-sm">
-            {navigation.map((item) => (
+            {[...navigation, ...secondaryPages].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="inline-block py-1 hover:text-paper">
                   {item.label}

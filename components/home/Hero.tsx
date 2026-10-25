@@ -1,27 +1,37 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { site } from "@/content/site";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SpectrumLine } from "./SpectrumLine";
+import { SystemDiagram } from "./SystemDiagram";
 
 export function Hero({ hasCv }: { hasCv: boolean }) {
   return (
-    <section aria-labelledby="hero-titre" className="bg-night text-paper">
+    <section aria-labelledby="hero-titre" className="relative overflow-hidden bg-night text-paper">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col-reverse items-center gap-12 pb-8 pt-14 sm:pt-20 md:flex-row md:gap-16">
-          <div className="min-w-0 flex-[1.6]">
-            <p className="font-mono text-[13px] tracking-[0.08em] text-electric-soft">
-              CHIMIE ANALYTIQUE · CHIMIOMÉTRIE · LOGICIEL
+        <div className="grid items-center gap-10 pb-6 pt-12 sm:pt-16 md:grid-cols-[1.25fr_1fr] md:gap-12">
+          <div className="min-w-0">
+            <p className="rise font-mono text-[13px] tracking-[0.08em] text-electric-soft">
+              INGÉNIEUR EN FORMATION · CHIMIE ET GÉNIE DES PROCÉDÉS
             </p>
-            <h1 id="hero-titre" className="mt-5 max-w-[15ch] text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-              Je construis les outils qui fiabilisent les mesures.
+            <h1
+              id="hero-titre"
+              className="rise mt-5 max-w-[17ch] text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.6rem]"
+              style={{ ["--delay" as string]: "120ms" }}
+            >
+              Comprendre un système, le modéliser, puis construire ce qui l&apos;améliore.
             </h1>
-            <p className="mt-6 max-w-[58ch] text-lg text-mist-light">
-              Élève-ingénieur en chimie analytique, matériaux et polymères à l&apos;INP-HB. Je pars d&apos;un problème de
-              laboratoire ou de production — calibrer, valider, contrôler — et je conçois l&apos;outil qui le résout : Excel
-              VBA, compléments Excel web, Python.
+            <p
+              className="rise mt-6 max-w-[60ch] text-lg text-mist-light"
+              style={{ ["--delay" as string]: "240ms" }}
+            >
+              Je suis en fin de formation d&apos;ingénieur à l&apos;INP-HB, en chimie et génie des procédés. La chimie est mon
+              socle, mais les problèmes qui m&apos;intéressent traversent les disciplines. J&apos;aime partir d&apos;un besoin
+              concret, chercher la science qui l&apos;explique, le modéliser, puis construire l&apos;outil ou le prototype qui
+              y répond.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="rise mt-9 flex flex-wrap gap-3" style={{ ["--delay" as string]: "360ms" }}>
               <ButtonLink href="/projets/">
                 Découvrir mes projets <ArrowRight aria-hidden="true" size={18} />
               </ButtonLink>
@@ -31,26 +41,35 @@ export function Hero({ hasCv }: { hasCv: boolean }) {
                 </ButtonLink>
               )}
             </div>
+            <Link
+              href="/vision/"
+              className="rise mt-6 inline-flex min-h-11 items-center gap-1.5 text-[15px] text-mist hover:text-paper"
+              style={{ ["--delay" as string]: "480ms" }}
+            >
+              Lire ma vision d&apos;ingénieur, le Projet Nexus <ArrowRight aria-hidden="true" size={16} />
+            </Link>
           </div>
-          <figure className="relative w-full max-w-[220px] flex-1 sm:max-w-[300px] md:max-w-[340px]">
-            <Image
-              src="/images/portrait.jpg"
-              alt={`Portrait de ${site.name}`}
-              width={481}
-              height={512}
-              priority
-              className="h-auto w-full rounded-xl bg-[#c9c9c5]"
-            />
-            <figcaption className="absolute bottom-3 left-3 rounded-md border border-night-line bg-night px-2.5 py-1.5 font-mono text-xs text-mist-light">
-              INP-HB · option CAMP
-            </figcaption>
-          </figure>
+
+          <div className="rise relative mx-auto aspect-square w-full max-w-[460px]" style={{ ["--delay" as string]: "200ms" }}>
+            <SystemDiagram />
+            <div className="float absolute inset-x-[16%] bottom-0 top-[14%]">
+              <Image
+                src="/images/portrait.webp"
+                alt={`Portrait de ${site.name}`}
+                width={695}
+                height={988}
+                priority
+                className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+              />
+            </div>
+          </div>
         </div>
+
         <div className="pb-8">
           <SpectrumLine />
           <div className="mt-4 flex flex-wrap justify-between gap-x-6 gap-y-2 font-mono text-xs text-mist">
             <span>{site.location}</span>
-            <span>Soutenance d&apos;ingénieur · décembre 2026</span>
+            <span>Soutenance d&apos;ingénieur en décembre 2026</span>
           </div>
         </div>
       </div>

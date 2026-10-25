@@ -1,26 +1,33 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { CategoryId, Project, ProjectStatus } from "@/lib/types";
-import { categories, statusLabels } from "@/content/projects";
+import type { DomainId, ProblemId, Project, ProjectStatus } from "@/lib/types";
+import { domains, problems, statusLabels } from "@/content/projects";
 import { ProjectCard } from "./ProjectCard";
 
 type Filter<T extends string> = T | "tous";
 
 /** Galerie filtrable (le seul composant client de /projets). */
 export function ProjectFilter({ projects }: { projects: Project[] }) {
-  const [category, setCategory] = useState<Filter<CategoryId>>("tous");
+  const [problem, setProblem] = useState<Filter<ProblemId>>("tous");
+  const [domain, setDomain] = useState<Filter<DomainId>>("tous");
   const [status, setStatus] = useState<Filter<ProjectStatus>>("tous");
 
   const visible = useMemo(
     () =>
       projects.filter(
-        (p) => (category === "tous" || p.categories.includes(category)) && (status === "tous" || p.status === status),
+        (p) =>
+          (problem === "tous" || p.problems.includes(problem)) &&
+          (domain === "tous" || p.domains.includes(domain)) &&
+          (status === "tous" || p.status === status),
       ),
-    [projects, category, status],
+    [projects, problem, domain, status],
   );
 
-  const categoryEntries = Object.entries(categories) as [CategoryId, string][];
+  const problemEntries = Object.entries(problems) as [ProblemId, string][];
+  const domainEntries = (Object.entries(domains) as [DomainId, string][]).filter(([id]) =>
+    projects.some((p) => p.domains.includes(id)),
+  );
   // Seuls les statuts réellement utilisés sont proposés (jamais de filtre qui renvoie une liste vide).
   const statusEntries = (Object.entries(statusLabels) as [ProjectStatus, string][]).filter(([id]) =>
     projects.some((p) => p.status === id),
@@ -30,13 +37,26 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
     <div>
       <div className="flex flex-col gap-5 border-b border-line pb-8">
         <fieldset>
-          <legend className="mb-3 font-mono text-xs uppercase tracking-widest text-ink-3">Domaine</legend>
+          <legend className="mb-3 font-mono text-xs uppercase tracking-widest text-ink-3">Problématique</legend>
           <div className="flex flex-wrap gap-2">
-            <Chip active={category === "tous"} onClick={() => setCategory("tous")}>
+            <Chip active={problem === "tous"} onClick={() => setProblem("tous")}>
+              Toutes
+            </Chip>
+            {problemEntries.map(([id, label]) => (
+              <Chip key={id} active={problem === id} onClick={() => setProblem(id)}>
+                {label}
+              </Chip>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend className="mb-3 font-mono text-xs uppercase tracking-widest text-ink-3">Domaine d&apos;application</legend>
+          <div className="flex flex-wrap gap-2">
+            <Chip active={domain === "tous"} onClick={() => setDomain("tous")}>
               Tous
             </Chip>
-            {categoryEntries.map(([id, label]) => (
-              <Chip key={id} active={category === id} onClick={() => setCategory(id)}>
+            {domainEntries.map(([id, label]) => (
+              <Chip key={id} active={domain === id} onClick={() => setDomain(id)}>
                 {label}
               </Chip>
             ))}
@@ -63,8 +83,11 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
 
       {visible.length > 0 ? (
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {visible.map((p) => (
-            <ProjectCard key={p.slug} project={p} headingLevel={2} />
+          {visible.map((p, i) => (
+            // Animation jouée à l'affichage : elle se rejoue quand on change de filtre.
+            <div key={`${p.slug}-${problem}-${domain}-${status}`} className="rise" style={{ ["--delay" as string]: `${Math.min(i, 5) * 70}ms` }}>
+              <ProjectCard project={p} headingLevel={2} />
+            </div>
           ))}
         </div>
       ) : (
