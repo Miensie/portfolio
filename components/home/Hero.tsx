@@ -10,7 +10,14 @@ const TITLE = "Comprendre un système, le modéliser, puis construire ce qui l'a
 
 export function Hero({ hasCv }: { hasCv: boolean }) {
   return (
-    <section aria-labelledby="hero-titre" className="relative overflow-hidden bg-night text-paper">
+    <section aria-labelledby="hero-titre" className="relative isolate overflow-hidden bg-night text-paper">
+      {/* Halos lumineux décoratifs qui se déplacent lentement. */}
+      <div aria-hidden="true" className="anim-halo absolute -left-40 -top-40 -z-10 size-[34rem] rounded-full opacity-70" />
+      <div
+        aria-hidden="true"
+        className="anim-halo absolute -bottom-48 right-[-8rem] -z-10 size-[32rem] rounded-full opacity-60"
+        style={{ ["--delay" as string]: "-7s" }}
+      />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 pb-6 pt-12 sm:pt-16 md:grid-cols-[1.25fr_1fr] md:gap-12">
           <div className="min-w-0">

@@ -28,8 +28,14 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-50 h-0.5">
-      <div ref={bar} className="h-full origin-left scale-x-0 bg-gradient-to-r from-electric to-electric-soft" />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[3px]">
+      {/* L'échelle est pilotée uniquement par style.transform (pas de classe scale-*, qui utilise
+          la propriété CSS `scale` et se multiplierait avec transform). */}
+      <div
+        ref={bar}
+        style={{ transform: "scaleX(0)" }}
+        className="h-full origin-left bg-gradient-to-r from-electric to-electric-soft shadow-[0_0_10px_rgba(96,165,250,0.8)]"
+      />
     </div>
   );
 }

@@ -51,7 +51,12 @@ export function PageHeader({ eyebrow, title, intro }: { eyebrow: string; title: 
     <div className="relative isolate overflow-hidden bg-night text-paper">
       {/* Fond animé décoratif : grille qui dérive, halo lumineux, ligne de balayage. */}
       <div aria-hidden="true" className="anim-grid absolute inset-0 -z-10" />
-      <div aria-hidden="true" className="anim-halo absolute -right-24 -top-24 -z-10 size-[28rem] rounded-full" />
+      <div aria-hidden="true" className="anim-halo absolute -right-32 -top-40 -z-10 size-[36rem] rounded-full" />
+      <div
+        aria-hidden="true"
+        className="anim-halo absolute -bottom-56 left-[-10rem] -z-10 size-[30rem] rounded-full opacity-60"
+        style={{ ["--delay" as string]: "-6s" }}
+      />
       <div aria-hidden="true" className="anim-scan absolute inset-x-0 top-0 -z-10 h-24" />
       <div className="mx-auto max-w-6xl px-4 pb-14 pt-14 sm:px-6 sm:pt-20 lg:px-8">
         <p className="rise font-mono text-[13px] uppercase tracking-[0.08em] text-electric-soft">{eyebrow}</p>
