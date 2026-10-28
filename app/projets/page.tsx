@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 export const metadata: Metadata = {
   title: "Projets",
   description:
-    "Études de cas : contrôle qualité des mélanges-maîtres, profil d'exactitude, prédiction du temps de rétention par machine learning, compléments Excel pour l'ingénierie.",
+    "Études de cas : contrôle qualité FTIR-ATR, profil d'exactitude, prédiction du temps de rétention par machine learning, compléments Excel pour l'ingénierie.",
   alternates: { canonical: "/projets/" },
 };
 

@@ -25,7 +25,7 @@ export default function HomePage() {
           eyebrow="01 · Ma démarche"
           id="demarche-titre"
           title="La même méthode, quel que soit le domaine"
-          intro="Une méthode de contrôle qualité, un modèle de réacteur ou un outil d'analyse de données : chaque projet suit ces cinq étapes. On les retrouve dans toutes mes études de cas."
+          intro="Un dosage par spectroscopie, un modèle de réacteur ou un outil de contrôle qualité : chaque projet suit ces cinq étapes. On les retrouve dans toutes mes études de cas."
         />
         <MethodFlow />
       </Section>

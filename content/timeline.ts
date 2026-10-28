@@ -19,7 +19,7 @@ export const timeline: TimelineItem[] = [
     period: "Avril à septembre 2026",
     title: "Stage de fin d'études",
     place: "SCCI, Société pour le Compoundage en Côte d'Ivoire",
-    text: "Mise en place d'une méthode de contrôle qualité des mélanges-maîtres additifs et d'un outil pour l'appliquer au quotidien.",
+    text: "Caractérisation quantitative des mélanges-maîtres additifs par spectroscopie FTIR-ATR : modélisation, validation et automatisation.",
   },
   {
     period: "Juillet à septembre 2025",
