@@ -35,9 +35,9 @@ const GH = "https://github.com/Miensie";
 export const projects: Project[] = [
   // ───────────────────────────────────────────────────────────────────────────
   {
-    slug: "controle-qualite-ftir-melanges-maitres",
-    title: "Contrôle qualité des mélanges-maîtres par FTIR-ATR",
-    shortTitle: "Contrôle qualité par FTIR-ATR",
+    slug: "controle-qualite-melanges-maitres",
+    title: "Contrôle qualité des mélanges-maîtres additifs",
+    shortTitle: "Contrôle qualité des mélanges-maîtres",
     context: "Stage de fin d'études, SCCI",
     year: "2026",
     problems: ["mesurer", "fiabiliser", "outiller"],
@@ -45,67 +45,46 @@ export const projects: Project[] = [
     status: "termine",
     featured: true,
     summary:
-      "Une méthode de dosage par spectroscopie infrarouge et un outil Excel VBA pour contrôler en routine la teneur en additifs des mélanges-maîtres.",
+      "Une méthode d'analyse et un outil de contrôle pour vérifier en routine la qualité des mélanges-maîtres additifs.",
     problem:
-      "L'entreprise a besoin de vérifier rapidement, et de façon traçable, la teneur en principes actifs des mélanges-maîtres additifs qu'elle produit.",
+      "L'entreprise avait besoin d'un moyen fiable et rapide pour vérifier la teneur en additifs des mélanges-maîtres qu'elle produit.",
     solution:
-      "J'ai mis au point une méthode de quantification par FTIR-ATR pour chaque additif, puis un outil Excel VBA qui choisit le modèle d'étalonnage, surveille sa validité dans le temps et garde la trace de chaque résultat.",
-    stack: ["FTIR-ATR", "Excel VBA", "UserForms", "Régression pondérée", "Profil d'exactitude"],
+      "J'ai mis en place une méthode d'analyse adaptée à ces produits, puis un outil simple qui permet au laboratoire de l'appliquer au quotidien et de garder la trace des résultats.",
+    stack: ["Contrôle qualité", "Validation de méthode", "Excel VBA"],
     notice:
-      "Projet industriel : je ne publie ici aucune formulation, aucune donnée brute ni aucune information interne de l'entreprise. Seules la démarche et l'architecture de l'outil sont décrites.",
+      "Projet industriel : la méthode, les produits et les résultats restent confidentiels. Cette page présente seulement le sens général du travail.",
     objectives: [
-      "Doser chaque additif à partir de son spectre infrarouge.",
-      "Valider la méthode avec une approche reconnue, le profil d'exactitude.",
-      "Donner au laboratoire un outil de contrôle utilisable sans programmer.",
-      "Assurer la traçabilité des étalonnages et des contrôles.",
+      "Disposer d'une méthode d'analyse fiable pour les additifs.",
+      "Vérifier que cette méthode est apte à l'usage prévu.",
+      "Donner au laboratoire un outil de contrôle facile à utiliser.",
     ],
     role:
-      "C'est mon projet de fin d'études. Je l'ai mené de bout en bout : préparation des échantillons d'étalonnage, acquisition des spectres, choix des bandes et des modèles, validation statistique, puis conception et développement de l'outil de contrôle.",
+      "C'est mon projet de fin d'études. Je l'ai mené de la préparation des essais jusqu'à la livraison de l'outil au laboratoire.",
     knowledge: [
-      "Spectroscopie infrarouge et relation entre absorbance et concentration.",
-      "Métrologie : étalonnage, incertitude, exigences d'un laboratoire selon l'ISO/IEC 17025.",
-      "Statistique : régression pondérée quand la dispersion varie avec la concentration.",
-      "Validation de méthodes analytiques par profil d'exactitude.",
-      "Programmation VBA et conception d'interfaces pour des utilisateurs non informaticiens.",
+      "Chimie analytique et caractérisation des matériaux polymères.",
+      "Statistique appliquée à la validation des méthodes.",
+      "Programmation et conception d'outils pour des utilisateurs non informaticiens.",
     ],
     approach: [
       {
-        title: "Étalonnage",
-        text: "J'ai préparé des échantillons de concentration connue et enregistré plusieurs spectres par niveau, pour estimer la dispersion de la mesure à chaque concentration.",
-      },
-      {
-        title: "Mesure spectrale",
-        text: "Chaque additif est dosé sur une bande qui lui est propre, par hauteur ou par aire de pic.",
-      },
-      {
-        title: "Modélisation",
-        text: "La droite d'étalonnage est ajustée par régression pondérée, chaque niveau recevant un poids égal à l'inverse de sa variance. Plusieurs formes de modèles sont comparées.",
+        title: "Mise au point",
+        text: "Préparation d'échantillons de référence et réglage de la méthode d'analyse.",
       },
       {
         title: "Validation",
-        text: "Le profil d'exactitude réunit biais, fidélité et intervalles de tolérance, puis les compare à des limites d'acceptation fixées à l'avance.",
+        text: "Vérification statistique que la méthode donne des résultats justes et reproductibles.",
       },
     ],
     architecture: [
-      "Un classeur Excel organisé en feuilles spécialisées : données, étalonnage, contrôle, historique.",
-      "Une sélection automatique du modèle d'étalonnage (linéaire, logarithmique, exponentiel ou puissance) d'après le R² et le RMSE.",
-      "Un contrôle périodique du modèle sur un matériau de référence.",
-      "Un journal qui conserve chaque étalonnage et chaque résultat.",
-      "Une interface faite de formulaires VBA et de modules séparés par fonction.",
+      "Un outil Excel VBA qui guide l'utilisateur pas à pas.",
+      "Un suivi dans le temps et un historique des résultats.",
     ],
     results: [
-      "Une méthode de dosage par additif, documentée dans mon mémoire de fin d'études.",
-      "Un outil de contrôle en routine qui remplace des calculs faits à la main par une procédure guidée et traçable.",
+      "Une méthode de contrôle documentée dans mon mémoire de fin d'études.",
+      "Un outil qui remplace des calculs manuels par une procédure guidée et traçable.",
     ],
-    limits: [
-      "Les modèles valent pour l'instrument, l'accessoire ATR et les produits étudiés.",
-      "L'approche univariée suppose que chaque additif possède une bande sans interférence notable.",
-      "Le mémoire sera soutenu en décembre 2026 : les conclusions détaillées ne sont pas encore publiques.",
-    ],
-    nextSteps: [
-      "Suivre le matériau de référence avec des cartes de contrôle.",
-      "Essayer des modèles multivariés (PLS) pour les additifs dont les bandes se recouvrent.",
-    ],
+    limits: ["La méthode est propre aux produits et à l'équipement de l'entreprise."],
+    nextSteps: ["Étendre le suivi à d'autres produits de la gamme."],
     links: [],
   },
 

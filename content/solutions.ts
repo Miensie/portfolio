@@ -6,9 +6,9 @@ import type { Solution } from "@/lib/types";
  */
 export const solutions: Solution[] = [
   {
-    title: "Calibrer et suivre une méthode analytique",
-    text: "Construire un étalonnage adapté (pondéré si la dispersion varie), comparer les modèles et surveiller leur validité dans le temps sur un matériau de référence.",
-    example: { slug: "controle-qualite-ftir-melanges-maitres", label: "Contrôle qualité par FTIR-ATR" },
+    title: "Mettre en place un contrôle qualité",
+    text: "Mettre au point une méthode d'analyse, vérifier qu'elle est fiable, puis l'outiller pour qu'elle soit appliquée au quotidien.",
+    example: { slug: "controle-qualite-melanges-maitres", label: "Contrôle qualité des mélanges-maîtres" },
   },
   {
     title: "Valider une méthode selon un référentiel",

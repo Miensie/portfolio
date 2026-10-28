@@ -30,12 +30,13 @@ export default function AboutPage() {
             </h2>
             <p>
               Je suis élève-ingénieur à l&apos;Institut National Polytechnique Houphouët-Boigny (INP-HB) de Yamoussoukro, en
-              chimie et génie des procédés, option Chimie Analytique, Matériaux et Polymères.
+              chimie et génie des procédés, option Chimie Analytique, Matériaux et Polymères. Depuis octobre 2026, je
+              suis stagiaire assistant contrôle qualité à la SCCI, où j&apos;avais réalisé mon stage de fin d&apos;études.
             </p>
             <p>
               Mes stages m&apos;ont appris une chose : un problème réel ne demande presque jamais une seule compétence. Pour
-              doser un additif dans un plastique, il m&apos;a fallu de la spectroscopie, de la statistique, de la métrologie
-              et de la programmation. Pour valider une méthode d&apos;analyse, il m&apos;a fallu écrire un logiciel.
+              contrôler la qualité d&apos;un produit industriel, il m&apos;a fallu de la chimie analytique, de la statistique, de
+              la métrologie et de la programmation. Pour valider une méthode d&apos;analyse, il m&apos;a fallu écrire un logiciel.
             </p>
             <p>
               C&apos;est pour cela que je construis une approche interdisciplinaire. Mon socle reste la chimie et le génie

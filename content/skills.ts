@@ -16,11 +16,11 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Chimie, matériaux et analyse",
     skills: [
-      { name: "Spectroscopie FTIR-ATR quantitative", level: "pratique", proof: ["controle-qualite-ftir-melanges-maitres"] },
-      { name: "Validation de méthodes analytiques", level: "maitrise", proof: ["profil-exactitude", "controle-qualite-ftir-melanges-maitres"] },
-      { name: "Étalonnage et contrôle qualité au laboratoire", level: "pratique", proof: ["controle-qualite-ftir-melanges-maitres"] },
+      { name: "Instrumentation analytique (spectroscopie IR)", level: "pratique", proof: ["controle-qualite-melanges-maitres"] },
+      { name: "Validation de méthodes analytiques", level: "maitrise", proof: ["profil-exactitude", "controle-qualite-melanges-maitres"] },
+      { name: "Étalonnage et contrôle qualité au laboratoire", level: "pratique", proof: ["controle-qualite-melanges-maitres"] },
       { name: "Chromatographie liquide (données de rétention)", level: "pratique", proof: ["prediction-temps-retention"] },
-      { name: "Matériaux polymères et mélanges-maîtres", level: "pratique", proof: ["controle-qualite-ftir-melanges-maitres"] },
+      { name: "Matériaux polymères et mélanges-maîtres", level: "pratique", proof: ["controle-qualite-melanges-maitres"] },
     ],
   },
   {
@@ -34,7 +34,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Statistique et chimiométrie",
     skills: [
-      { name: "Régression simple et pondérée", level: "maitrise", proof: ["controle-qualite-ftir-melanges-maitres"] },
+      { name: "Régression simple et pondérée", level: "maitrise", proof: ["profil-exactitude"] },
       { name: "Profil d'exactitude, ISO 5725-2", level: "maitrise", proof: ["profil-exactitude"] },
       { name: "Tests d'hypothèse, ANOVA", level: "pratique", proof: ["doe-ai-plans-experiences", "profil-exactitude"] },
       { name: "ACP, PLS, classification", level: "pratique", proof: ["chemai-chimiometrie-excel"] },
@@ -54,7 +54,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Logiciel et automatisation",
     skills: [
-      { name: "Excel avancé et VBA (UserForms, modules)", level: "maitrise", proof: ["controle-qualite-ftir-melanges-maitres", "profil-exactitude"] },
+      { name: "Excel avancé et VBA (UserForms, modules)", level: "maitrise", proof: ["controle-qualite-melanges-maitres", "profil-exactitude"] },
       { name: "Python", level: "pratique", proof: ["prediction-temps-retention", "physioai-lab"] },
       { name: "Compléments Excel web (Office.js, JavaScript)", level: "pratique", proof: ["chemai-chimiometrie-excel", "esg-analyzer-pro"] },
       { name: "API REST avec FastAPI", level: "pratique", proof: ["profil-exactitude", "physioai-lab", "formulation-studio"] },

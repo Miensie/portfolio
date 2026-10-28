@@ -24,6 +24,14 @@ export function Hero({ hasCv }: { hasCv: boolean }) {
             <p className="rise font-mono text-[13px] tracking-[0.08em] text-electric-soft">
               INGÉNIEUR EN FORMATION · CHIMIE ET GÉNIE DES PROCÉDÉS
             </p>
+            {/* Poste actuel, avec un point qui pulse. */}
+            <p
+              className="rise mt-4 inline-flex items-center gap-2.5 rounded-full border border-night-line bg-night-2/80 px-3.5 py-1.5 text-sm text-mist-light"
+              style={{ ["--delay" as string]: "60ms" }}
+            >
+              <span aria-hidden="true" className="ping relative size-2 shrink-0 rounded-full bg-emerald-400" />
+              Actuellement stagiaire assistant contrôle qualité à la SCCI
+            </p>
             <h1
               id="hero-titre"
               aria-label={TITLE}

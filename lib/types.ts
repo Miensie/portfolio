@@ -97,8 +97,10 @@ export interface TimelineItem {
   title: string;
   place: string;
   text?: string;
-  /** Événement à venir ou en cours */
+  /** Événement à venir */
   upcoming?: boolean;
+  /** Poste ou activité en cours */
+  current?: boolean;
 }
 
 export interface Solution {

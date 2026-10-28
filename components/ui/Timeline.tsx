@@ -15,12 +15,13 @@ export function Timeline({ items, compact = false }: { items: TimelineItem[]; co
             <span
               aria-hidden="true"
               className={`absolute -left-[4px] top-2 size-[9px] rounded-full border-[1.5px] border-electric ${
-                item.upcoming ? "ping bg-paper" : "bg-electric"
+                item.upcoming ? "bg-paper" : item.current ? "ping bg-electric" : "bg-electric"
               }`}
             />
             <p className="font-mono text-[13px] text-electric-ink">
               {item.period}
               {item.upcoming && <span className="ml-2 text-ink-3">· à venir</span>}
+              {item.current && <span className="ml-2 font-semibold text-electric-ink">· en cours</span>}
             </p>
             <h3 className="mt-1 font-semibold">{item.title}</h3>
             <p className="text-[15px] text-ink-3">{item.place}</p>

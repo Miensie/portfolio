@@ -9,10 +9,17 @@ export const timeline: TimelineItem[] = [
     upcoming: true,
   },
   {
+    period: "Depuis octobre 2026",
+    title: "Stagiaire assistant contrôle qualité",
+    place: "SCCI, Société pour le Compoundage en Côte d'Ivoire",
+    text: "Contrôle qualité des produits au sein du laboratoire.",
+    current: true,
+  },
+  {
     period: "Avril à septembre 2026",
     title: "Stage de fin d'études",
     place: "SCCI, Société pour le Compoundage en Côte d'Ivoire",
-    text: "Caractérisation quantitative des mélanges-maîtres additifs par spectroscopie FTIR-ATR : modélisation, validation et automatisation.",
+    text: "Mise en place d'une méthode de contrôle qualité des mélanges-maîtres additifs et d'un outil pour l'appliquer au quotidien.",
   },
   {
     period: "Juillet à septembre 2025",
